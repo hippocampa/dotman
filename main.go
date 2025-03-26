@@ -11,6 +11,7 @@ import (
 func main() {
 	app := cmd.New()
 	app.AddSubCmd(subcommand.InitCmd())
+	app.AddSubCmd(subcommand.TrackCmd())
 	if err := app.CliApp.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
