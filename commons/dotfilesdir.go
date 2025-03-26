@@ -11,5 +11,5 @@ func GetDotFilesDir() (string, error) {
 		return "", err
 	}
 	homedir := currentUser.HomeDir
-	return filepath.Join(homedir, "dotfiles"), nil
+	return filepath.Join(homedir, ".dotfiles"), nil
 }

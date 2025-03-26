@@ -1,10 +1,11 @@
 package subcommand
 
 import (
+	"fmt"
 	"os"
-	"os/user"
 	"path/filepath"
 
+	"github.com/hippocampa/dotshadow/commons"
 	"github.com/urfave/cli/v2"
 )
 
@@ -17,15 +18,20 @@ func InitCmd() *cli.Command {
 }
 
 func InitAction(context *cli.Context) error {
-	// get current user
-	currUser, err := user.Current()
+	dotfilesDir, err := commons.GetDotFilesDir()
 	if err != nil {
 		return err
 	}
-	userHomedir := currUser.HomeDir
-
-	if err := os.Mkdir(filepath.Join(userHomedir, "dotfiles"), 0o755); err != nil {
-		return nil
+	// create .dotfiles in homedirectory
+	if err := os.Mkdir(dotfilesDir, 0o755); err != nil {
+		return err
 	}
+
+	// crate index.json
+	if _, err := os.Create(filepath.Join(dotfilesDir, "index.json")); err != nil {
+		return err
+	}
+	fmt.Printf("Intialized:\n.dotfiles\t%v\nindex.json\t%v\n", dotfilesDir, filepath.Join(dotfilesDir, "index.json"))
+
 	return nil
 }

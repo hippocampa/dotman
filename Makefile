@@ -1,11 +1,20 @@
-src := "main.go"
-out_name := "dotshadow"
+# Makefile
+
+SRC := main.go
+OUT_NAME := dotman
+BUILD_DIR := bin
+OUT_PATH := $(BUILD_DIR)/$(OUT_NAME)
+
 run:
-	@go run $(src)
+	@go run $(SRC)
 
 build:
-	@go build -o $(out_name)
+	@mkdir -p $(BUILD_DIR)
+	@go build -o $(OUT_PATH) $(SRC)
+	@echo "Built at $(OUT_PATH)"
 
 clean:
-	rm dotshadow
-	rm ~/dotfiles
+	@rm -rf $(OUT_PATH)
+	@rm -rf ~/.dotfiles
+	@echo "Cleaned build and dotfiles"
+
