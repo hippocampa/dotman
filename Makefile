@@ -7,4 +7,5 @@ build:
 	@go build -o $(out_name)
 
 clean:
-	@rm dotshadow
+	rm dotshadow
+	rm ~/dotfiles
