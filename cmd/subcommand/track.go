@@ -51,13 +51,15 @@ func track(source string, destination string) error {
 		return folderErr
 	}
 
-	if err := copyFile(source, destFull); err != nil {
-		return err
-	}
+	// if err := copyFile(source, destFull); err != nil {
+	// 	return err
+	// }
 
-	if err := createSymLink(source, destFull); err != nil {
-		return err
-	}
+	// if err := createSymLink(source, destFull); err != nil {
+	// 	return err
+	// }
+	data := commons.NewTrackerData(source, destFull, commons.LINKED)
+	fmt.Println(data)
 
 	return nil
 }
