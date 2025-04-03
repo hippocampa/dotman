@@ -58,8 +58,11 @@ func track(source string, destination string) error {
 	// if err := createSymLink(source, destFull); err != nil {
 	// 	return err
 	// }
-	data := commons.NewTrackerData(source, destFull, commons.LINKED)
-	fmt.Println(data)
+	commons.NewTrackerData(source, destFull, commons.LINKED)
+	err = commons.SaveTrackerData()
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
