@@ -8,7 +8,7 @@ type Cmd struct {
 
 func New() *Cmd {
 	return &Cmd{CliApp: &cli.App{
-		Name:     "dotshadow",
+		Name:     "dotman",
 		Commands: []*cli.Command{},
 	}}
 }
