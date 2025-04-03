@@ -37,7 +37,6 @@ func trackAction(context *cli.Context) error {
 }
 
 func track(source string, destination string) error {
-	// TODO: Update index.js
 	userHomeDir, err := commons.GetHomeDir()
 	if err != nil {
 		return err
@@ -51,23 +50,22 @@ func track(source string, destination string) error {
 		return folderErr
 	}
 
-	// if err := copyFile(source, destFull); err != nil {
-	// 	return err
-	// }
+	if err := copyFile(source, destFull); err != nil {
+		return err
+	}
 
-	// if err := createSymLink(source, destFull); err != nil {
-	// 	return err
-	// }
+	if err := createSymLink(source, destFull); err != nil {
+		return err
+	}
+
 	commons.NewTrackerData(source, destFull, commons.LINKED)
 	err = commons.SaveTrackerData()
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
 
-// TODO: Do i need to check if the symlink is exist?
 func createSymLink(source, dest string) error {
 	if _, err := os.Lstat(dest); err == nil {
 		// File/symlink exists, remove it
