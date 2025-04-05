@@ -9,6 +9,11 @@ func Commit(source, dest string) error {
 	if err := Link(source, dest); err != nil {
 		return fmt.Errorf("error copying file: %w", err)
 	}
+
+	if err := UpdateHist(source, dest, "linked"); err != nil {
+		return fmt.Errorf("Error updating index.json: %w", err)
+	}
+
 	// update json
 	return nil
 }

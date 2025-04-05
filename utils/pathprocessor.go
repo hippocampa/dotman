@@ -3,6 +3,7 @@ package utils
 import (
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
@@ -13,4 +14,15 @@ func GetHomeRelativePath(path string) (string, error) {
 	}
 	relativePath := filepath.Join(strings.TrimPrefix(path, dotfilesRoot))
 	return relativePath, nil
+}
+
+func NormalizeHomePath(path string) string {
+	re := regexp.MustCompile(`^/home/[^/]+/(.*)$`)
+	if re.MatchString(path) {
+		matches := re.FindStringSubmatch(path)
+		if len(matches) > 1 {
+			path = "$HOME/" + matches[1]
+		}
+	}
+	return path
 }
