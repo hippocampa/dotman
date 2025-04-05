@@ -43,7 +43,6 @@ func restoreAll() error {
 			utils.DenormalizeHomePath(data.Source)); err != nil {
 			return err
 		}
-
 	}
 
 	return nil
