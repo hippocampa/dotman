@@ -18,6 +18,8 @@ func Restore(context *cli.Context) error {
 		}
 	} else if context.Args().Len() == 0 {
 		return fmt.Errorf("missing <file>: either provide a file or use --all")
+	} else {
+		return restoreFile(context.Args().First())
 	}
 	return nil
 }
@@ -39,11 +41,41 @@ func restoreAll() error {
 	}
 
 	for _, data := range models.TrackerDataList {
-		if err := storage.Link(utils.DenormalizeHomePath(data.Stored),
-			utils.DenormalizeHomePath(data.Source)); err != nil {
+		if err := storage.Link(
+			utils.DenormalizeHomePath(data.Stored),
+			utils.DenormalizeHomePath(data.Source),
+		); err != nil {
 			return err
 		}
 	}
 
 	return nil
+}
+
+func restoreFile(target string) error {
+	utils.PrintAction.Println(" RESTORING FILE ")
+
+	dotfileRoot, err := utils.GetDotfilesRoot()
+	if err != nil {
+		return err
+	}
+	histFile, err := os.ReadFile(dotfileRoot + "/index.json")
+	if err != nil {
+		return err
+	}
+	if err := json.Unmarshal(histFile, &models.TrackerDataList); err != nil {
+		return err
+	}
+
+	normalizedTarget := utils.NormalizeHomePath(target)
+	for _, data := range models.TrackerDataList {
+		if data.Source == normalizedTarget {
+			return storage.Link(
+				utils.DenormalizeHomePath(data.Stored),
+				utils.DenormalizeHomePath(data.Source),
+			)
+		}
+	}
+
+	return fmt.Errorf("file not tracked: %s", target)
 }
