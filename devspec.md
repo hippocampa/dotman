@@ -140,11 +140,11 @@ Build a dotfiles manager that tracks and manages configuration files directly fr
 
 ### ✅ Phase 1: Core Tracking
 
-- [ ] `init` to set up the store
-- [ ] `track` to copy file + symlink + update index
-- [ ] `untrack` to undo
-- [ ] `list` to display all tracked files
-- [ ] Basic `index.json` read/write
+- [x] `init` to set up the store
+- [x] `track` to copy file + symlink + update index
+- [x] `untrack` to undo
+- [x] `list` to display all tracked files
+- [x] Basic `index.json` read/write
 
 ---
 

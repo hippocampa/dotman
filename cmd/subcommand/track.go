@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/hippocampa/dotshadow/commons"
+	"github.com/hippocampa/dotshadow/core"
 	"github.com/urfave/cli/v2"
 )
 
@@ -16,7 +17,7 @@ func TrackCmd() *cli.Command {
 	return &cli.Command{
 		Name:      "track",
 		Usage:     "Track files",
-		Action:    trackAction,
+		Action:    core.Track,
 		ArgsUsage: "<FILE PATH>",
 	}
 }

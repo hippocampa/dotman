@@ -19,3 +19,9 @@ clean:
 	@rm -rf $(OUT_PATH)
 	@rm -rf ~/.dotfiles
 	@echo "Cleaned build and dotfiles"
+
+dev:
+	@make clean
+	@make build
+	@./bin/dotman init
+	@./bin/dotman track ~/Desktop/testfile.md
