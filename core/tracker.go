@@ -31,5 +31,9 @@ func Track(context *cli.Context) error {
 		return fmt.Errorf("error copying files: %w", err)
 	}
 
+	if err := storage.Link(source, filepath.Join(dotfilesRoot, sourceRelative)); err != nil {
+		return fmt.Errorf("error symlink: %w", err)
+	}
+
 	return nil
 }
