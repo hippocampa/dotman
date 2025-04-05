@@ -11,12 +11,12 @@
 
 ```
 
-It was originally named dotshadow, since I wanted to try some different approaches to managing dotfiles… but those ideas didn’t really work out.
+It was originally named _dotshadow_, since I wanted to try some different approaches to manage dotfiles… but those ideas didn’t really work out.
 
 But hey, here it is — my own take on a dotfile manager, now called Dotman.
 
 > Dotman is highly inspired by
-> GNU Stow.
+> [GNU Stow](https://www.gnu.org/software/stow/).
 > But it works in reverse — and maybe even better (I hope).
 
 ## What's working so far
@@ -81,11 +81,12 @@ Dotman is designed to be simple and intuitive — no reverse folder magic or clu
 
 ## Installation
 
-```bash
-go install github.com/<yourusername>/dotman@latest
-```
+Download the latest binary from the [Releases](https://github.com/hippocampa/dotman/releases) page.
 
-Make sure `$GOPATH/bin` is in your `$PATH`.
+```bash
+chmod +x dotman
+mv dotman /usr/local/bin
+```
 
 ## Philosophy
 
@@ -94,3 +95,16 @@ Dotman **does not** reverse your folder structure.
 You track files from where they are (usually in `$HOME`), and Dotman keeps a copy of them in `.dotfiles/`. It handles linking, indexing, and (soon) syncing — while staying out of your way.
 
 No weirdness. No reverse symlinks. No need to move all your dotfiles into one mega repo manually.
+
+## Contributing
+
+This project is still evolving, and any feedback, ideas, or issues are very welcome.
+
+Feel free to open an issue or just yell at me nicely.
+
+## Credits
+
+- [Golang](https://go.dev/)
+- [Urfavecli](https://github.com/urfave/cli)
+
+Made with love and a lot of `ln -s` by [me](https://github.com/hippocampa).
