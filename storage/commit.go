@@ -11,7 +11,7 @@ func Commit(source, dest string) error {
 	}
 
 	if err := UpdateHist(source, dest, "linked"); err != nil {
-		return fmt.Errorf("Error updating index.json: %w", err)
+		return fmt.Errorf("error updating index.json: %w", err)
 	}
 
 	// update json

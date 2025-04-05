@@ -10,7 +10,7 @@ import (
 )
 
 func UpdateHist(src, dest, status string) error {
-	data := models.NewTrackerData(utils.NormalizeHomePath(src), dest, "linked")
+	data := models.NewTrackerData(utils.NormalizeHomePath(src), utils.NormalizeHomePath(dest), "linked")
 
 	dotfilesRoot, err := utils.GetDotfilesRoot()
 	if err != nil {
