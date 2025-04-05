@@ -11,6 +11,16 @@ import (
 )
 
 func Init(context *cli.Context) error {
+	banner := `
+  _____        _                         
+ |  __ \      | |                        
+ | |  | | ___ | |_ _ __ ___   __ _ _ __  
+ | |  | |/ _ \| __| '_ ` + "`" + ` _ \ / _` + "`" + ` | '_ \ 
+ | |__| | (_) | |_| | | | | | (_| | | | |
+ |_____/ \___/ \__|_| |_| |_|\__,_|_| |_|
+                                         
+                                         `
+	fmt.Println(banner)
 	dotfilesRoot, err := utils.GetDotfilesRoot()
 	if err != nil {
 		return fmt.Errorf("GetDotfilesRoot: %w", err)
