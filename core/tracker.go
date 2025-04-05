@@ -12,6 +12,7 @@ import (
 
 func Track(context *cli.Context) error {
 	source := context.Args().Get(0)
+	utils.PrintAction.Println(" TRACKING DOTFILES ")
 	dotfilesRoot, err := utils.GetDotfilesRoot()
 	if err != nil {
 		return fmt.Errorf("GetDotfilesRoot: %w", err)

@@ -24,8 +24,8 @@ func Copy(source string, destination string) error {
 	if _, err := io.Copy(destFile, srcFile); err != nil {
 		return fmt.Errorf("error copying file: %w", err)
 	}
-	color.Green("COPYING:")
-	color.Magenta("%v to %v\n", source, destination)
+	color.New(color.FgGreen).Print(" [COPIED] ")
+	color.Green("%v to %v\n", source, destination)
 
 	return nil
 }
