@@ -25,7 +25,7 @@ func Init(context *cli.Context) error {
 		return err
 	}
 	color.Green("INITIALIZING:")
-	fmt.Printf(".dotfiles\t%v\nindex.json\t%v\n",
+	color.Magenta(".dotfiles\t%v\nindex.json\t%v\n",
 		dotfilesRoot, filepath.Join(dotfilesRoot, "index.json"))
 
 	return nil
