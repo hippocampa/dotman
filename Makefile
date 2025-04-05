@@ -23,5 +23,10 @@ clean:
 dev:
 	@make clean
 	@make build
+	@touch ~/Desktop/lalalalostyou.md
+	@touch ~/Desktop/testfile.md
+	@echo "All my demons run wild\nAll my demons have your smile" >> ~/Desktop/lalalalostyou.md
 	@./bin/dotman init
 	@./bin/dotman track ~/Desktop/testfile.md
+	@./bin/dotman track ~/Desktop/lalalalostyou.md
+

@@ -24,8 +24,8 @@ func Init(context *cli.Context) error {
 	if _, err := os.Create(filepath.Join(dotfilesRoot, "index.json")); err != nil {
 		return err
 	}
-	color.Green("INITIALIZING:")
-	color.Magenta(".dotfiles\t%v\nindex.json\t%v\n",
+	utils.PrintAction.Println(" INITIALIZING ")
+	color.Green(" .dotfiles\t%v\n index.json\t%v\n",
 		dotfilesRoot, filepath.Join(dotfilesRoot, "index.json"))
 
 	return nil
