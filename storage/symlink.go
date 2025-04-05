@@ -1,9 +1,10 @@
 package storage
 
 import (
-	"fmt"
 	"log"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 func Link(source string, dest string) error {
@@ -17,6 +18,7 @@ func Link(source string, dest string) error {
 	if err := os.Symlink(source, dest); err != nil {
 		return err
 	}
-	fmt.Printf("Symlink Created:\n%v to %v\n", source, dest)
+	color.Green("SYMLINKING:")
+	color.Magenta("%v to %v\n", source, dest)
 	return nil
 }

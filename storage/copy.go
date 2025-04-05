@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 func Copy(source string, destination string) error {
@@ -22,7 +24,8 @@ func Copy(source string, destination string) error {
 	if _, err := io.Copy(destFile, srcFile); err != nil {
 		return fmt.Errorf("error copying file: %w", err)
 	}
-	fmt.Printf("Copying %v to %v\n", source, destination)
+	color.Green("COPYING:")
+	color.Magenta("%v to %v\n", source, destination)
 
 	return nil
 }

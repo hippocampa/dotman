@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/fatih/color"
 	"github.com/hippocampa/dotshadow/utils"
 	"github.com/urfave/cli/v2"
 )
@@ -23,7 +24,8 @@ func Init(context *cli.Context) error {
 	if _, err := os.Create(filepath.Join(dotfilesRoot, "index.json")); err != nil {
 		return err
 	}
-	fmt.Printf("Intialized:\n.dotfiles\t%v\nindex.json\t%v\n",
+	color.Green("INITIALIZING:")
+	fmt.Printf(".dotfiles\t%v\nindex.json\t%v\n",
 		dotfilesRoot, filepath.Join(dotfilesRoot, "index.json"))
 
 	return nil
